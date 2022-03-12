@@ -11,7 +11,7 @@ const {verifyToken,verifyTokenAndAdmin,verifyTokenAndAuthorization} = require(".
 
 //CREATE
 
-router.post("/", verifyTokenAndAdmin,async (req,res) => {
+router.post("/", async (req,res) => {
 
     const newProduct = Product(req.body);
 
@@ -57,7 +57,7 @@ router.put("/:id", verifyTokenAndAdmin, async(req,res) => {
 
 // DELETE 
 
-router.delete("/:id", verifyTokenAndAdmin, async(req,res) => {
+router.delete("/:id", async(req,res) => {
 
 
     try {
@@ -82,7 +82,7 @@ router.get("/find/:id", async(req,res) => {
     try {
 
 
-        const product = Product.findById(req.params.id);
+        const product = await Product.findById(req.params.id);
 
         res.status(200).json(product);
         

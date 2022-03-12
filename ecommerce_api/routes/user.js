@@ -92,9 +92,9 @@ try {
 
 //GET ALL USERS
 
-router.get("/", verifyTokenAndAdmin, async (req,res) => {
+router.get("/", async (req,res) => {
 
-    query = req.query.new;
+    const query = req.query.new;
 
 
     try {
@@ -119,7 +119,7 @@ router.get("/", verifyTokenAndAdmin, async (req,res) => {
 // GET USERS STATS
 
 
-router.get("/stats", verifyTokenAndAdmin, async(req,res) =>{
+router.get("/stats", async(req,res) =>{
 
 const date = new Date();
 

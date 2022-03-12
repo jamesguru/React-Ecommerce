@@ -87,7 +87,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async(req,res) =>{
 
 // GET ALL ORDERS
 
-router.get("/", verifyTokenAndAdmin, async(req,res) => {
+router.get("/", async(req,res) => {
 
 
     try {

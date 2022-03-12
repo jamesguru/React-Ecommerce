@@ -62,7 +62,7 @@ try {
 
     const {password, ...info} = user._doc;
 
-    const accessToken = jwt.sign({id:user._id, isAdmin: user.isAdmin}, process.env.JWT_SEC, {expiresIn: '3d'});
+    const accessToken = jwt.sign({id:user._id, isAdmin: user.isAdmin}, process.env.JWT_SEC, {expiresIn: '10d'});
 
 
     res.status(200).json({...info, accessToken});
