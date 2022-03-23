@@ -102,6 +102,12 @@ router.get("/", async(req,res) => {
 
     const qCategory= req.query.category;
 
+    const qSearch = req.query.search;
+
+    const page = req.query.page;
+
+    const limit = req.query.limit;
+
 
     try {
 
@@ -115,12 +121,16 @@ router.get("/", async(req,res) => {
         }else if(qCategory){
 
 
-            products= await Product.find({categories: {$in: [qCategory]},});
+            products= await Product.find({categories: {$in: [qCategory]},}).limit(limit * 1).skip((page-1) * limit);
 
+        }else if(qSearch){
+
+
+            products = await Product.find({$text: {$search: qSearch, $caseSensitive:false, $diacriticSensitive:false}}).limit(limit * 1).skip((page-1) * limit);
         }else{
 
 
-            products = await Product.find();
+            products = await Product.find().limit(limit * 1).skip((page-1) * limit);
         }
 
         res.status(200).json(products);

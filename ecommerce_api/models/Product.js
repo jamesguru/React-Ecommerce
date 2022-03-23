@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const ProductSchema = mongoose.Schema({
 
-    title: {type: String , required:true},
+    title: {type: String},
 
     desc: {type: String, required: true},
 
@@ -27,6 +27,6 @@ const ProductSchema = mongoose.Schema({
 );
 
 
-
+ProductSchema.index({'$**': 'text'});
 
 module.exports = mongoose.model("Product", ProductSchema);

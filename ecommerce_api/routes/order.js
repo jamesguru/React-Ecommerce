@@ -10,7 +10,7 @@ const {verifyToken,verifyTokenAndAdmin,verifyTokenAndAuthorization} = require(".
 //CREATE
 
 
-router.post('/', verifyToken, async (req,res) => {
+router.post('/', async (req,res) => {
 
 
     const newOrder = Order(req.body);
@@ -34,7 +34,7 @@ router.post('/', verifyToken, async (req,res) => {
 
 //UPATE
 
-router.put("/:id", verifyTokenAndAdmin, async (req,res) =>{
+router.put("/:id", async (req,res) =>{
 
     try {
 
@@ -51,7 +51,7 @@ router.put("/:id", verifyTokenAndAdmin, async (req,res) =>{
 
 //DELETE 
 
-router.delete("/:id", verifyTokenAndAdmin, async(req,res) => {
+router.delete("/:id", async(req,res) => {
 
     try {
 
@@ -103,7 +103,7 @@ router.get("/", async(req,res) => {
 
 // GET STATS
 
-router.get("/income", verifyTokenAndAdmin, async(req,res) =>{
+router.get("/income", async(req,res) =>{
 
     const date = new Date();
 
