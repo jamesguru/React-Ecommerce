@@ -17,6 +17,8 @@ const cartRoute = require("./routes/cart");
 const stripeRoute = require("./routes/stripe");
 const AnnoucementRoute = require("./routes/annoucement");
 
+const commentsRoute = require("./routes/comments");
+
 dotenv.config();
 
 
@@ -42,11 +44,16 @@ app.use("/api/carts", cartRoute);
 
 app.use("/api/annoucement", AnnoucementRoute);
 
+app.use('/api/comments', commentsRoute);
+
 app.use("/api/orders", orderRoute);
 app.use('/api/products', productRoute);
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
+
 app.use("/api/checkout", stripeRoute);
+
+
 app.listen(process.env.PORT || 5000 , ()=> {
 
  process.env.PORT ? console.log(`Server started on ${process.env.PORT}`): console.log("server started at port 5000");

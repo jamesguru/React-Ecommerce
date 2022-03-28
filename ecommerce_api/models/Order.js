@@ -6,6 +6,8 @@ const OrderSchema = mongoose.Schema({
 
     name: {type: String , required:true},
 
+    userId: {type: String , required:true},
+
     products: {type:Array, required:true},
 
     total: {type: Number, required: true},
@@ -14,7 +16,7 @@ const OrderSchema = mongoose.Schema({
 
     phone:{type:Number,required:true},
 
-    status: {type:String, default:"pending"}
+    status: {type:Number, default:0}
 
     
 },

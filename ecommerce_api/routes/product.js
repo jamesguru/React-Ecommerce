@@ -130,7 +130,7 @@ router.get("/", async(req,res) => {
         }else{
 
 
-            products = await Product.find().limit(limit * 1).skip((page-1) * limit);
+            products = await (await Product.find().limit(limit * 1).skip((page-1) * limit));
         }
 
         res.status(200).json(products);

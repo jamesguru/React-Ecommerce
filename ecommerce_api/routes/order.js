@@ -69,12 +69,15 @@ router.delete("/:id", async(req,res) => {
 // GET USER ORDERS
 
 
-router.get("/find/:userId", verifyTokenAndAuthorization, async(req,res) =>{
+router.get("/find/:id", async(req,res) =>{
 
+    
 
     try {
 
-        const orders = await Order.find({userId: req.params.id});
+       
+
+        const orders = await (await Order.find({userId:req.params.id})).reverse();
 
         res.status(200).json(orders);
         
@@ -89,10 +92,10 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async(req,res) =>{
 
 router.get("/", async(req,res) => {
 
-
+    
     try {
 
-        const orders = await Order.find();
+        const orders = await (await Order.find()).reverse();
 
         res.status(200).json(orders);
         
