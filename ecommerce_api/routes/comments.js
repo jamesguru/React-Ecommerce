@@ -83,7 +83,7 @@ router.delete('/:id', async (req,res) => {
 
 router.get('/find/:id', async (req,res) =>{
 
-    console.log(req.params.id);
+    
     try {
 
         const Comments = await (await Comment.find({productId:req.params.id})).reverse();
