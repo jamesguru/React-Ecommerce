@@ -17,6 +17,8 @@ const cartRoute = require("./routes/cart");
 const stripeRoute = require("./routes/stripe");
 const AnnoucementRoute = require("./routes/annoucement");
 
+const galleryRoute = require("./routes/gallery");
+
 const commentsRoute = require("./routes/comments");
 
 dotenv.config();
@@ -45,6 +47,8 @@ app.use("/api/carts", cartRoute);
 app.use("/api/annoucement", AnnoucementRoute);
 
 app.use('/api/comments', commentsRoute);
+
+app.use('/api/gallery', galleryRoute);
 
 app.use("/api/orders", orderRoute);
 app.use('/api/products', productRoute);

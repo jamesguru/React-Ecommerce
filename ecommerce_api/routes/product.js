@@ -32,6 +32,9 @@ router.post("/", async (req,res) => {
 })
 
 
+
+
+
 //UPDATED
 
 
@@ -140,6 +143,40 @@ router.get("/", async(req,res) => {
         
         res.status(200).json(error);
     }
+})
+
+
+// RATING
+
+router.put('/ratings/:productId' , async (req,res) =>{
+
+    const {star, name, comment, postedBy} = req.body;
+
+    
+
+    try {
+
+
+        if(star){
+
+
+            const postedRating = await Product.findByIdAndUpdate(req.params.productId, 
+                {$push:{ratings:{star,name,comment,postedBy}}},{new:true}) 
+
+
+                res.status(201).json(postedRating);
+
+        }else{
+
+                res.status(401).json("no rating");
+        }
+        
+    } catch (error) {
+
+        res.status(500).json('something went wrong');
+        
+    }
+
 })
 
 module.exports=router;

@@ -18,7 +18,24 @@ const ProductSchema = mongoose.Schema({
 
     price:{type:Number, required:true},
 
-    inStock:{type:Boolean, default:true}
+    inStock:{type:Boolean, default:true},
+
+
+    ratings:[
+
+
+        {
+
+
+            star: Number,
+
+            name:{type:String},
+
+            comment:{type:String},
+
+            postedBy:{type:String}
+        }
+    ]
 
 },
 
