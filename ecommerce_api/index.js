@@ -19,7 +19,11 @@ const AnnoucementRoute = require("./routes/annoucement");
 
 const galleryRoute = require("./routes/gallery");
 
+const promoRoute = require('./routes/promo');
+
 const commentsRoute = require("./routes/comments");
+
+const sliderRoute = require("./routes/slider");
 
 dotenv.config();
 
@@ -44,7 +48,11 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/carts", cartRoute);
 
+app.use("/api/slider", sliderRoute);
+
 app.use("/api/annoucement", AnnoucementRoute);
+
+app.use("/api/promotion", promoRoute);
 
 app.use('/api/comments', commentsRoute);
 

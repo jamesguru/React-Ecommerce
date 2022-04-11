@@ -96,6 +96,37 @@ router.get("/find/:id", async(req,res) => {
     }
 })
 
+//GET RELATED 
+
+router.get("/related/:id", async(req,res) => {
+
+    try {
+
+
+        const product = await Product.findById(req.params.id).exec();
+
+        const related = await Product.find({
+
+
+            _id: {$ne:product._id},
+
+            brand: product.brand,
+
+
+        }).limit(50).populate("categories").exec();
+
+
+
+        res.status(200).json(related);
+        
+    } catch (error) {
+
+
+        res.status(200).json(error);
+        
+    }
+})
+
 
 //GET ALL PRODUCTS
 
